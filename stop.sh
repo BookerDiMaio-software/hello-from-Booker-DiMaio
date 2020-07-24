@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 echo "Deleting java-kubernetes-example deployment..."
 kubectl delete deployment java-kubernetes-example
 
@@ -10,7 +8,7 @@ kubectl delete service java-kubernetes-example
 
 if [ -f "tunnel.pid" ]; then
   echo "Stopping Minikube tunnel..."
-  kill "$(cat "tunnel.pid")"
+  kill -- -"$(ps -o pgid= "$(cat "tunnel.pid")" | grep -o [0-9]*)"
   rm "tunnel.pid"
 fi
 
