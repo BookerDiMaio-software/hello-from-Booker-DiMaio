@@ -5,7 +5,8 @@ web application that can be run locally in Kubenetes via Minikube.
 
 ### Prerequisites ###
 
-1. You must have Docker and Minikube installed and running locally.
+1. You must have [Docker](https://docs.docker.com/get-docker/) and
+[Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) installed and running locally.
 
 2. You must link Minikube to your local Docker (see [Cleanup](#cleanup) to undo this once complete):
 ```
