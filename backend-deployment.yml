@@ -1,0 +1,33 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: java-kubernetes-example
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-kubernetes-example
+  template:
+    metadata:
+      labels:
+        app: java-kubernetes-example
+    spec:
+      containers:
+        - name: java-kubernetes-example
+          image: java-kubernetes-example:v1
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: java-kubernetes-example
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: java-kubernetes-example
